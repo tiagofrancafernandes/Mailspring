@@ -1,14 +1,5 @@
 /* eslint import/first: 0 */
 
-// TODO: Remove when upgrading to Electron 4
-const fs = require('fs');
-fs.statSyncNoException = function(...args) {
-  try {
-    return fs.statSync.apply(fs, args);
-  } catch (e) {}
-  return false;
-};
-
 // Extend the standard promise class a bit
 import './promise-extensions';
 

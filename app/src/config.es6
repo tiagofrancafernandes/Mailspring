@@ -14,7 +14,7 @@ const { Emitter } = require('event-kit');
 
 if (process.type === 'renderer') {
   app = remote.getGlobal('application');
-  webContentsId = remote.getCurrentWebContents().id;
+  webContentsId = remote.getCurrentWebContents().getId();
   ({ errorLogger } = AppEnv);
 } else {
   app = global.application;
