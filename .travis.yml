@@ -47,7 +47,7 @@ branches:
 matrix:
   include:
   - os: linux
-    env: CC=gcc-5 CXX=g++-5
+    env: CC=gcc-4.8 CXX=g++-4.8
   - os: osx
     osx_image: xcode8.3
     env: CC=clang CXX=clang++ SIGN_BUILD=true
@@ -72,6 +72,7 @@ script:
 - npm run ci-setup-mac-keychain
 - npm run lint
 - sudo apt-get install cmake execstack g++-5 autoconf automake libtool libc-ares-dev libctemplate-dev libcurl4-openssl-dev libicu-dev libxext-dev libsasl2-dev libsasl2-modules libsasl2-modules-gssapi-mit libssl-dev libtidy-dev libxtst-dev libxkbfile-dev libglib2.0-dev libxml2-dev uuid-dev
+- export CC=gcc-5 CXX=g++-5
 - mailsync/build.sh
 - mv ./mailsync ./mailsync-src
 - DEBUG=electron-packager,electron-osx-sign npm run build
