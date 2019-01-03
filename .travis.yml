@@ -25,33 +25,18 @@ addons:
     packages:
     - build-essential
     - clang
-    - cmake
     - execstack
     - fakeroot
-    - g++-5
+    - g++-4.8
     - git
     - libgnome-keyring-dev
-    - libsecret-1-dev
+    - libsecret-1-dev 
     - xvfb
     - rpm
-    - autoconf
-    - automake
-    - libtool
-    - libc-ares-dev
-    - libctemplate-dev
-    - libcurl4-openssl-dev
-    - libicu-dev
     - libxext-dev
-    - libsasl2-dev
-    - libsasl2-modules
-    - libsasl2-modules-gssapi-mit
-    - libssl-dev
-    - libtidy-dev
     - libxtst-dev
     - libxkbfile-dev
-    - libglib2.0-dev
-    - libxml2-dev
-    - uuid-dev
+
 
 branches:
   only:
@@ -86,6 +71,7 @@ before_script:
 script:
 - npm run ci-setup-mac-keychain
 - npm run lint
+- sudo apt-get install cmake execstack g++-5 autoconf automake libtool libc-ares-dev libctemplate-dev libcurl4-openssl-dev libicu-dev libxext-dev libsasl2-dev libsasl2-modules libsasl2-modules-gssapi-mit libssl-dev libtidy-dev libxtst-dev libxkbfile-dev libglib2.0-dev libxml2-dev uuid-dev
 - mailsync/build.sh
 - mv ./mailsync ./mailsync-src
 - DEBUG=electron-packager,electron-osx-sign npm run build
