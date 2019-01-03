@@ -1,5 +1,4 @@
 import { remote } from 'electron';
-import keytar from 'keytar';
 import { localized } from './intl';
 
 /**
@@ -84,16 +83,11 @@ class KeyManager {
   }
 
   async _getKeyHash() {
-    const raw = (await keytar.getPassword(this.SERVICE_NAME, this.KEY_NAME)) || '{}';
-    try {
-      return JSON.parse(raw);
-    } catch (err) {
-      return {};
-    }
+    return {};
   }
 
   async _writeKeyHash(keys) {
-    await keytar.setPassword(this.SERVICE_NAME, this.KEY_NAME, JSON.stringify(keys));
+    //
   }
 
   _reportFatalError(err) {
